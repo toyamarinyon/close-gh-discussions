@@ -2,13 +2,16 @@
   "name": "close-gh-discussions",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.mjs",
+  "bin": {
+    "close-gh-discussions": "dist/index.mjs"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "toyamarinyon",
+  "license": "MIT",
   "dependencies": {
     "@clack/prompts": "^0.6.3",
     "graphql": "^16.6.0",
