@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import {
   intro,
   text,
@@ -19,7 +20,6 @@ const graphQLClient = new GraphQLClient("https://api.github.com/graphql", {
 });
 
 intro(`Let's close GitHub discussions!`);
-
 const { owner, repo } = await group(
   {
     owner: () =>
@@ -64,10 +64,6 @@ const selectDiscussions = await multiselect({
     label: discussion.title,
   })),
 });
-text({
-  message: JSON.stringify(selectDiscussions),
-});
-
 const closeDiscussionSpinner = spinner();
 closeDiscussionSpinner.start(`Closing discussions...`);
 if (Array.isArray(selectDiscussions)) {
@@ -78,5 +74,4 @@ if (Array.isArray(selectDiscussions)) {
   }
 }
 closeDiscussionSpinner.stop();
-// Do stuff
-outro(`You're all set!`);
+outro(`Closed all selected discussions!`);
