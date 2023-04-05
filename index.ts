@@ -56,7 +56,7 @@ const result = (await graphQLClient.request(discussionsQuery, {
   owner,
   repo,
 })) as any;
-fetchDiscussionSpinner.stop();
+fetchDiscussionSpinner.stop('Fetched discussions on ${owner}/${repo}.');
 const selectDiscussions = await multiselect({
   message: "Which discussion do you want to close?",
   options: result.repository.discussions.nodes.map((discussion) => ({
@@ -73,5 +73,5 @@ if (Array.isArray(selectDiscussions)) {
     });
   }
 }
-closeDiscussionSpinner.stop();
-outro(`Closed all selected discussions!`);
+closeDiscussionSpinner.stop('Closed all selected discussions!');
+outro(`Done!`);

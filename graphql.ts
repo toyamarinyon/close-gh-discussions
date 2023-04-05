@@ -3,7 +3,7 @@ import { gql } from "graphql-request";
 export const discussionsQuery = gql`
   query ($owner: String!, $repo: String!) {
     repository(owner: $owner, name: $repo) {
-      discussions(first: 30, orderBy: { field: CREATED_AT, direction: DESC }) {
+      discussions(first: 30, orderBy: { field: CREATED_AT, direction: DESC }, states: [OPEN]) {
         nodes {
           id
           title
